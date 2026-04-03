@@ -18,8 +18,7 @@
 }
 
 html, body {
-    background-color: transparent !important;
-    background-image: none !important;
+    background-color: #0b0e14 !important; /* Solid dark background to prevent white voids */
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -33,7 +32,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* PWA user select prevention to feel more native */
+    background-image: 
+        radial-gradient(circle at 0% 0%, rgba(88, 166, 255, 0.05), transparent 40%),
+        radial-gradient(circle at 100% 100%, rgba(88, 166, 255, 0.05), transparent 40%) !important;
     user-select: none; 
 }
 
