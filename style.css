@@ -39,11 +39,13 @@ body {
 }
 
 .widget {
-    background: #12141a; /* Solid dark color at the root layer to prevent gaps */
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    background: #12141a;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border: none;
     border-radius: 0;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
     width: 100vw;
     height: 100vh;
     padding: 24px;
@@ -51,7 +53,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    position: relative;
     overflow: hidden;
     margin: 0;
 }

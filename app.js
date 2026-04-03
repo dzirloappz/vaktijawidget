@@ -39,16 +39,32 @@ async function fetchLocations() {
 async function fetchPrayerTimes(id) {
     try {
         console.log(`Fetching prayer times for location ID: ${id}`);
-        // API ID for Sarajevo is 77, but the user may have saved a different ID
-        const res = await fetch(`${API_BASE}/${id}`, { mode: 'cors' });
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        // First try direct fetch
+        let res = await fetch(`${API_BASE}/${id}`);
+        
+        // If it fails (possibly CORS), try a proxy
+        if (!res.ok) {
+            console.log('Direct fetch failing, trying CORS proxy...');
+            res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`${API_BASE}/${id}`)}`);
+            const proxyData = await res.json();
+            return JSON.parse(proxyData.contents);
+        }
+        
         const data = await res.json();
         isOffline = false;
         return data;
     } catch (e) {
-        console.error('Could not fetch prayer times:', e);
-        isOffline = true;
-        return null;
+        console.warn('Direct fetch failed (CORS?), trying proxy...', e);
+        try {
+            const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`${API_BASE}/${id}`)}`);
+            const proxyData = await res.json();
+            isOffline = false;
+            return JSON.parse(proxyData.contents);
+        } catch (proxyError) {
+            console.error('All fetch methods failed:', proxyError);
+            isOffline = true;
+            return null;
+        }
     }
 }
 
