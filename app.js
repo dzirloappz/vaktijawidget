@@ -23,6 +23,7 @@ const settingsModal = document.getElementById('settings-modal');
 const closeModalBtn = document.getElementById('close-modal-btn');
 const citySelect = document.getElementById('city-select');
 const saveSettingsBtn = document.getElementById('save-settings-btn');
+const closeWidgetBtn = document.getElementById('close-widget-btn');
 
 // --- API Calls ---
 async function fetchLocations() {
@@ -199,6 +200,12 @@ saveSettingsBtn.addEventListener('click', () => {
     nextPrayerInfoEl.textContent = '';
     loadData(newId);
 });
+
+if (closeWidgetBtn) {
+    closeWidgetBtn.addEventListener('click', () => {
+        window.close();
+    });
+}
 
 // --- Bootstrap ---
 async function loadData(id) {
