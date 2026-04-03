@@ -1,11 +1,11 @@
 :root {
-    --bg-color: #0d1117;
-    --glass-bg: rgba(22, 27, 34, 0.65);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --text-primary: #e6edf3;
-    --text-secondary: #8b949e;
+    --bg-color: transparent;
+    --glass-bg: rgba(13, 17, 23, 0.85); /* Darker and more opaque for readability on desktop background */
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --text-primary: #ffffff;
+    --text-secondary: #909bb2;
     --accent-color: #58a6ff;
-    --accent-glow: rgba(88, 166, 255, 0.4);
+    --accent-glow: rgba(88, 166, 255, 0.6);
     --active-prayer-bg: rgba(88, 166, 255, 0.15);
     --active-prayer-border: #58a6ff;
     --font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -17,35 +17,42 @@
     box-sizing: border-box;
 }
 
+html, body {
+    background-color: transparent !important;
+    background-image: none !important;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
 body {
-    background-color: var(--bg-color);
-    background-image: radial-gradient(circle at top right, rgba(88, 166, 255, 0.15), transparent 400px),
-                      radial-gradient(circle at bottom left, rgba(88, 166, 255, 0.1), transparent 400px);
     color: var(--text-primary);
     font-family: var(--font-family);
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    overflow: hidden;
     /* PWA user select prevention to feel more native */
     user-select: none; 
 }
 
 .widget {
     background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
     border: 1px solid var(--glass-border);
-    border-radius: 24px;
+    border-radius: 20px;
     width: 320px;
     padding: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 12px 64px rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
     gap: 20px;
     position: relative;
     overflow: hidden;
+    /* Center it slightly higher than perfect center */
+    margin-top: -5vh;
 }
 
 /* Header */

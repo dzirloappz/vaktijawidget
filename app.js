@@ -10,6 +10,7 @@ let vakatTimes = [];
 let locationId = parseInt(localStorage.getItem(STORAGE_KEY) || DEFAULT_LOCATION_ID, 10);
 let clockInterval = null;
 let currentDate = '';
+let isOffline = false;
 
 // --- DOM Elements ---
 const locationNameEl = document.getElementById('location-name');
@@ -37,11 +38,16 @@ async function fetchLocations() {
 
 async function fetchPrayerTimes(id) {
     try {
-        const res = await fetch(`${API_BASE}/${id}`);
-        if (!res.ok) throw new Error('Network response was not ok');
-        return await res.json();
+        console.log(`Fetching prayer times for location ID: ${id}`);
+        // API ID for Sarajevo is 77, but the user may have saved a different ID
+        const res = await fetch(`${API_BASE}/${id}`, { mode: 'cors' });
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        const data = await res.json();
+        isOffline = false;
+        return data;
     } catch (e) {
         console.error('Could not fetch prayer times:', e);
+        isOffline = true;
         return null;
     }
 }
@@ -180,9 +186,20 @@ saveSettingsBtn.addEventListener('click', () => {
 
 // --- Bootstrap ---
 async function loadData(id) {
-    locationNameEl.textContent = 'Učitavanje...';
-    const data = await fetchPrayerTimes(id);
-    renderPrayerTimes(data);
+    locationNameEl.textContent = 'Ažuriram...';
+    try {
+        const data = await fetchPrayerTimes(id);
+        if (data) {
+            renderPrayerTimes(data);
+        } else {
+            locationNameEl.textContent = 'Problem s mrežom';
+            nextPrayerInfoEl.textContent = 'Pokušavam ponovo...';
+            setTimeout(() => loadData(id), 5000); // Retry in 5s
+        }
+    } catch (err) {
+        locationNameEl.textContent = 'Greška';
+        console.error(err);
+    }
 }
 
 function init() {
