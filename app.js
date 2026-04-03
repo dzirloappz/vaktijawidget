@@ -193,11 +193,6 @@ function init() {
     clockInterval = setInterval(updateClock, 1000);
 }
 
-// Register service worker for offline support (PWA)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(() => {});
-    });
-}
+// Service Worker registered in index.html <head> for early detection.
 
 init();
