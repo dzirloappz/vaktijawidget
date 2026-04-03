@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaktija Widget</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Ionicons for Settings Icon -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+
+    <!-- Widget Container -->
+    <div class="widget">
+        <!-- Header -->
+        <header>
+            <div class="header-info">
+                <h1 id="location-name">Učitavanje...</h1>
+                <p id="current-date">--</p>
+            </div>
+            <button id="settings-btn" aria-label="Postavke">
+                <ion-icon name="cog-outline"></ion-icon>
+            </button>
+        </header>
+
+        <!-- Current Time Display -->
+        <div class="time-display">
+            <h2 id="current-clock">00:00:00</h2>
+            <p id="next-prayer-info">Priprema...</p>
+        </div>
+
+        <!-- Prayer Times List -->
+        <ul class="prayer-times">
+            <li class="prayer" data-index="0">
+                <span class="prayer-name">Zora</span>
+                <span class="prayer-time" id="time-zora">--:--</span>
+            </li>
+            <li class="prayer" data-index="1">
+                <span class="prayer-name">Izlazak sunca</span>
+                <span class="prayer-time" id="time-izlazak">--:--</span>
+            </li>
+            <li class="prayer" data-index="2">
+                <span class="prayer-name">Podne</span>
+                <span class="prayer-time" id="time-podne">--:--</span>
+            </li>
+            <li class="prayer" data-index="3">
+                <span class="prayer-name">Ikindija</span>
+                <span class="prayer-time" id="time-ikindija">--:--</span>
+            </li>
+            <li class="prayer" data-index="4">
+                <span class="prayer-name">Akšam</span>
+                <span class="prayer-time" id="time-aksam">--:--</span>
+            </li>
+            <li class="prayer" data-index="5">
+                <span class="prayer-name">Jacija</span>
+                <span class="prayer-time" id="time-jacija">--:--</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Postavke</h2>
+                <button id="close-modal-btn"><ion-icon name="close-outline"></ion-icon></button>
+            </div>
+            <div class="modal-body">
+                <label for="city-select">Odaberite grad:</label>
+                <select id="city-select">
+                    <!-- Options populated by JS -->
+                </select>
+                <button id="save-settings-btn" class="primary-btn">Spremi</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
