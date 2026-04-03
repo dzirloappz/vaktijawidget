@@ -36,61 +36,56 @@ body {
 }
 
 .widget {
-    background: rgba(13, 17, 23, 0.95); /* Fluent-style dark glass */
-    backdrop-filter: blur(40px) saturate(200%);
-    -webkit-backdrop-filter: blur(40px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(13, 17, 23, 0.96); /* Solid Fluent dark core */
+    backdrop-filter: blur(48px);
+    -webkit-backdrop-filter: blur(48px);
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Minimalist border */
     border-radius: 12px;
-    width: 280px;
+    width: 280px; 
     padding: 20px;
-    box-shadow: 0 16px 64px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 16px 64px rgba(0, 0, 0, 1); /* Intense floating shadow */
     display: flex;
     flex-direction: column;
     gap: 16px;
     position: relative;
-    overflow: visible; /* Allow side-bar bits the user likes */
-    margin: 0 auto;
+    overflow: visible; 
+    margin: 30px; /* Space for the side controls */
     -webkit-app-region: drag;
 }
 
-/* Side Control Bar (Matches the Weather Widget's floating right menu) */
+/* Vertical Side Controls (Matches Weather Widget exactly) */
 .side-controls {
     position: absolute;
-    top: 0; right: -42px; /* Floats just outside on the right */
+    top: 10px; 
+    right: -48px; /* Perfectly floats beside the card */
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    opacity: 0;
-    transition: opacity 0.3s;
+    gap: 8px;
+    z-index: 1000;
     -webkit-app-region: no-drag;
 }
 
-.widget:hover .side-controls {
-    opacity: 1;
-}
-
 .ctrl-btn {
-    background: rgba(13, 17, 23, 0.9);
-    backdrop-filter: blur(10px);
+    background: rgba(30, 34, 42, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: #fff;
-    width: 34px; height: 34px;
-    border-radius: 6px;
+    width: 36px; height: 36px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ctrl-btn:hover {
     background: rgba(255, 255, 255, 0.15);
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 #close-widget-btn:hover {
-    background: #c42b1c; /* Windows 11 close state red */
+    background: #c42b1c; /* Windows 11 close red */
 }
 
 
