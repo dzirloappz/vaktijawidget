@@ -18,7 +18,7 @@
 }
 
 html, body {
-    background-color: #00ff00 !important; /* Chroma-Key Green: This will be made 100% transparent by the script */
+    background-color: #0b0e14 !important; /* Solid dark background to prevent any voids */
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -36,19 +36,22 @@ body {
 }
 
 .widget {
-    background: #12141a;
+    background: #12141a; /* Rich dark base */
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    width: 320px; /* Fixed width for the floating card */
+    border: none;
+    border-radius: 0;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
     padding: 24px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: none;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    position: relative;
     overflow: hidden;
+    margin: 0;
 }
 
 /* Header */
