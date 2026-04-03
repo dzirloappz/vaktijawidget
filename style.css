@@ -39,21 +39,21 @@ body {
 }
 
 .widget {
-    background: var(--glass-bg);
+    background: #12141a; /* Solid dark color at the root layer to prevent gaps */
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    width: 320px;
+    border: none;
+    border-radius: 0;
+    width: 100vw;
+    height: 100vh;
     padding: 24px;
-    box-shadow: 0 12px 64px rgba(0, 0, 0, 0.7);
+    box-shadow: none;
     display: flex;
     flex-direction: column;
     gap: 20px;
     position: relative;
     overflow: hidden;
-    /* Center it slightly higher than perfect center */
-    margin-top: -5vh;
+    margin: 0;
 }
 
 /* Header */
@@ -76,6 +76,7 @@ header {
 }
 
 #settings-btn {
+    -webkit-app-region: no-drag; /* Buttons should not be draggable */
     background: none;
     border: none;
     color: var(--text-secondary);
