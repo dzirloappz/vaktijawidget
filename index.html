@@ -21,16 +21,15 @@
 
     <!-- Widget Container -->
     <div class="widget">
-        <button id="close-widget-btn" class="close-id-btn">✕</button>
-        <!-- Header (Compact) -->
+        <!-- Floating Controls Side-Bar -->
+        <div class="side-controls">
+            <button id="close-widget-btn" class="ctrl-btn" title="Zatvori">✕</button>
+            <button id="settings-btn" class="ctrl-btn" title="Postavke">⚙</button>
+        </div>
+
         <header>
-            <div class="header-info">
-                <h1 id="location-name">--</h1>
-                <p id="current-date">--</p>
-            </div>
-            <button id="settings-btn" aria-label="Postavke">
-                <ion-icon name="cog-outline"></ion-icon>
-            </button>
+            <h1 id="location-name">--</h1>
+            <p id="current-date">--</p>
         </header>
 
         <!-- Current Time Display -->
